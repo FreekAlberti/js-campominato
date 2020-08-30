@@ -12,37 +12,25 @@ con difficoltà 0 => tra 1 e 100
 con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2 => tra 1 e 50
 */
-var bombe = 16;
-//var tentativi = 100;
+
 //funzione che genera un numero casuale tra 1 e 100
-function numeriCasuali(){
-  return Math.floor(Math.random() * (100 - 1) + 1);
-}
 //funzione che dato un array e un numero mi controlla che il numero non sia già nell'array
-function checkNum(num){
-  for (var i = 16; i >= listaNumBomba.length; i--) {
-    var check = true;
-    if (listaNumBomba.indexOf(num) != -1) {
-      check = false;
-    }
-  }
-  return check;
-}
 //creo variabile array che contiene i numeri bomba
-var listaNumBomba = [];
 //ciclo che chiama la mia funzione di generazione dei numeri 16 volte  while(i<bombe)
 //check che il numero non sia duplicato
 //se non è duplicato, lo salvo nell'array bombe
+
+var bombe = 16;
+var listaNumBomba = [];
 while (listaNumBomba.length < bombe) {
   var numero = numeriCasuali();
-  console.log(numero);
-  var verifica = checkNum(numero);
-  console.log(verifica);
+  var verifica = checkNum(listaNumBomba, numero);
   if (verifica == true) {
     listaNumBomba.push(numero);
   }
 }
 console.log(listaNumBomba);
+
 //creo variabile array che contiene i numeri utente
 //variabili booleana haPerso = false
 //ciclo di 100-16 volte  //for(i=0; i<tentativi-bombe; i++)
@@ -58,3 +46,53 @@ console.log(listaNumBomba);
 //controllo se haPerso è false
   //alert hai vinto
   //alert con array utente .length -> numero di volte che l'utente ha inserito un numero
+
+
+/*
+var numUtente =[];
+var haPerso = false;
+for (var i = 0; i < (100 - 16); i++) {
+  var numeroDichiaratoUtente = prompt("scrivi un numero tra 1 e 100");
+  var ok = num1Cento(numeroDichiaratoUtente);
+  var verifica = checkNum(numUtente, numeroDichiaratoUtente);
+  if (verifica == true) {
+    numUtente.push(numeroDichiaratoUtente);
+  }
+  var check = checkNum(listaNumBomba, numeroDichiaratoUtente);
+  if (check == false) {
+    alert("Hai perso");
+  }
+  console.log(numUtente);
+}
+*/
+//FUNZIONI
+
+//VERIFICA NUMERO COMPRESO 1-100
+
+function num1Cento (num){
+  var ok = true;
+  if (num < 1) {
+    ok = false;
+  } else if (num > 100){
+    ok = false;
+  }
+  return ok;
+}
+
+//VERIFICA NUMERO PRESENTE IN ARRAY
+
+function checkNum(lista, num){
+  for (var i = 16; i >= lista.length; i--) {
+    var check = true;
+    if (lista.indexOf(num) != -1) {
+      check = false;
+    }
+  }
+  return check;
+}
+
+// GENERA NUMERO CASUALE TRA 1-100
+
+function numeriCasuali(){
+  return Math.floor(Math.random() * (100 - 1) + 1);
+}
