@@ -12,51 +12,39 @@ con difficoltà 0 => tra 1 e 100
 con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2 => tra 1 e 50
 */
-
 var bombe = 16;
 //var tentativi = 100;
-​
 //funzione che genera un numero casuale tra 1 e 100
-
-function numeriCasuali() {
+function numeriCasuali(){
   return Math.floor(Math.random() * (100 - 1) + 1);
 }
-​
 //funzione che dato un array e un numero mi controlla che il numero non sia già nell'array
-
-function checkNum(){
-  for (var i = 0; i < listaNumBomba.length; i++) {
+function checkNum(num){
+  for (var i = 16; i >= listaNumBomba.length; i--) {
     var check = true;
-    if (numero == listaNumBomba[i]) {
+    if (listaNumBomba.indexOf(num) != -1) {
       check = false;
-    } 
+    }
   }
   return check;
 }
-​
 //creo variabile array che contiene i numeri bomba
-
 var listaNumBomba = [];
-​
 //ciclo che chiama la mia funzione di generazione dei numeri 16 volte  while(i<bombe)
 //check che il numero non sia duplicato
 //se non è duplicato, lo salvo nell'array bombe
-
-var i = 0;
-while (i < bombe) {
+while (listaNumBomba.length < bombe) {
   var numero = numeriCasuali();
-  var verifica = checkNum();
+  console.log(numero);
+  var verifica = checkNum(numero);
+  console.log(verifica);
   if (verifica == true) {
     listaNumBomba.push(numero);
   }
-  i++;
 }
-
-​
+console.log(listaNumBomba);
 //creo variabile array che contiene i numeri utente
-​
 //variabili booleana haPerso = false
-​
 //ciclo di 100-16 volte  //for(i=0; i<tentativi-bombe; i++)
   //prompt in cui chiedo all'utente un numero
   //check che il numero sia compreso tra 1 e 100
@@ -67,7 +55,6 @@ while (i < bombe) {
       //alert con array utente .length -> numero di volte che l'utente ha inserito un numero corretto
       //haPerso = true;
       //esco dal ciclo
-​
 //controllo se haPerso è false
   //alert hai vinto
   //alert con array utente .length -> numero di volte che l'utente ha inserito un numero
