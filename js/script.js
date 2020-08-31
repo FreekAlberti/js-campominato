@@ -32,8 +32,7 @@ while (listaNumBomba.length < bombe) {
 console.log(listaNumBomba);
 
 //creo variabile array che contiene i numeri utente
-//variabili booleana haPerso = false
-//ciclo di 100-16 volte  //for(i=0; i<tentativi-bombe; i++)
+//ciclo di 84 volte
   //prompt in cui chiedo all'utente un numero
   //check che il numero sia compreso tra 1 e 100
   //check che il numero non sia duplicato nell'array utente
@@ -46,12 +45,8 @@ console.log(listaNumBomba);
 //controllo se haPerso è false
   //alert hai vinto
   //alert con array utente .length -> numero di volte che l'utente ha inserito un numero
-
-
 /*
-var numUtente =[];
-var haPerso = false;
-for (var i = 0; i < (100 - 16); i++) {
+for (var i = 0; i < 84; i++) {
   var numeroDichiaratoUtente = prompt("scrivi un numero tra 1 e 100");
   var ok = num1Cento(numeroDichiaratoUtente);
   var verifica = checkNum(numUtente, numeroDichiaratoUtente);
@@ -65,6 +60,23 @@ for (var i = 0; i < (100 - 16); i++) {
   console.log(numUtente);
 }
 */
+var numUtente =[];
+while (numUtente.length < 5) {
+  var numeroDichiaratoUtente = parseInt(prompt("scrivi un numero tra 1 e 100"));
+  var ok = num1Cento(numeroDichiaratoUtente);
+  var verifica = checkNum(numUtente, numeroDichiaratoUtente);
+  var check = checkNum(listaNumBomba, numeroDichiaratoUtente);
+  if (check == true) {
+    alert("Hai perso\nSei arrivato fino al livello " + numUtente.length);
+  }
+  if (isNaN(numeroDichiaratoUtente) || numeroDichiaratoUtente < 1 || numeroDichiaratoUtente > 100) {
+    alert("Sei pregato di inserire un valore congruo alla richiesta");
+  } else if (verifica == false && check == false) {
+    numUtente.push(numeroDichiaratoUtente);
+  }
+  console.log(numUtente);
+}
+
 //FUNZIONI
 
 //VERIFICA NUMERO COMPRESO 1-100
