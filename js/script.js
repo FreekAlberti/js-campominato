@@ -45,29 +45,17 @@ console.log(listaNumBomba);
 //controllo se haPerso è false
   //alert hai vinto
   //alert con array utente .length -> numero di volte che l'utente ha inserito un numero
-/*
-for (var i = 0; i < 84; i++) {
-  var numeroDichiaratoUtente = prompt("scrivi un numero tra 1 e 100");
-  var ok = num1Cento(numeroDichiaratoUtente);
-  var verifica = checkNum(numUtente, numeroDichiaratoUtente);
-  if (verifica == true) {
-    numUtente.push(numeroDichiaratoUtente);
-  }
-  var check = checkNum(listaNumBomba, numeroDichiaratoUtente);
-  if (check == false) {
-    alert("Hai perso");
-  }
-  console.log(numUtente);
-}
-*/
+
+var numeroEsploso = true;
 var numUtente =[];
-while (numUtente.length < 5) {
+while (numUtente.length < 84 && numeroEsploso == true) {
   var numeroDichiaratoUtente = parseInt(prompt("scrivi un numero tra 1 e 100"));
   var ok = num1Cento(numeroDichiaratoUtente);
   var verifica = checkNum(numUtente, numeroDichiaratoUtente);
   var check = checkNum(listaNumBomba, numeroDichiaratoUtente);
   if (check == true) {
     alert("Hai perso\nSei arrivato fino al livello " + numUtente.length);
+    numeroEsploso = false;
   }
   if (isNaN(numeroDichiaratoUtente) || numeroDichiaratoUtente < 1 || numeroDichiaratoUtente > 100) {
     alert("Sei pregato di inserire un valore congruo alla richiesta");
@@ -75,6 +63,9 @@ while (numUtente.length < 5) {
     numUtente.push(numeroDichiaratoUtente);
   }
   console.log(numUtente);
+}
+if (numUtente.length = 83) {
+  alert("Daje Bro hai vinto inserendo " + (numUtente.length + 1) + " numeri");
 }
 
 //FUNZIONI
