@@ -13,6 +13,30 @@ con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2 => tra 1 e 50
 */
 
+// BONUS
+
+var controllo = false;
+while (controllo == false) {
+  var dif = parseInt(prompt("difficoltá 0, 1 o 2?"));
+  if (dif < 0 || dif > 2) {
+    alert("inserisci una difficoltá accettabile");
+  } else {
+    controllo = true;
+  }
+}
+var range;
+switch (dif) {
+  case 0:
+    range = 100;
+    break;
+  case 1:
+    range = 80;
+    break;
+  case 2:
+    range = 50;
+    break;
+}
+
 //funzione che genera un numero casuale tra 1 e 100
 //funzione che dato un array e un numero mi controlla che il numero non sia già nell'array
 //creo variabile array che contiene i numeri bomba
@@ -24,7 +48,9 @@ var bombe = 16;
 var listaNumBomba = [];
 while (listaNumBomba.length < bombe) {
   var numero = numeriCasuali();
+  console.log(numero);
   var verifica = checkNum(listaNumBomba, numero);
+  console.log(verifica);
   if (verifica == false) {
     listaNumBomba.push(numero);
   }
@@ -48,7 +74,7 @@ console.log(listaNumBomba);
 
 var numeroEsploso = true;
 var numUtente =[];
-while (numUtente.length < 84 && numeroEsploso == true) {
+while (numUtente.length < (range - 16) && numeroEsploso == true) {
   var numeroDichiaratoUtente = parseInt(prompt("scrivi un numero tra 1 e 100"));
   var ok = num1Cento(numeroDichiaratoUtente);
   var verifica = checkNum(numUtente, numeroDichiaratoUtente);
@@ -64,7 +90,7 @@ while (numUtente.length < 84 && numeroEsploso == true) {
   }
   console.log(numUtente);
 }
-if (numUtente.length = 83) {
+if (numUtente.length == range - 17) {
   alert("Daje Bro hai vinto inserendo " + (numUtente.length + 1) + " numeri");
 }
 
@@ -76,7 +102,7 @@ function num1Cento (num){
   var ok = true;
   if (num < 1) {
     ok = false;
-  } else if (num > 100){
+  } else if (num > range){
     ok = false;
   }
   return ok;
@@ -99,5 +125,5 @@ function checkNum(lista, num){
 // GENERA NUMERO CASUALE TRA 1-100
 
 function numeriCasuali(){
-  return Math.floor(Math.random() * (100 - 1) + 1);
+  return Math.floor(Math.random() * (range - 1) + 1);
 }
