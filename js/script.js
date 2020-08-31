@@ -25,7 +25,7 @@ var listaNumBomba = [];
 while (listaNumBomba.length < bombe) {
   var numero = numeriCasuali();
   var verifica = checkNum(listaNumBomba, numero);
-  if (verifica == true) {
+  if (verifica == false) {
     listaNumBomba.push(numero);
   }
 }
@@ -82,11 +82,13 @@ function num1Cento (num){
 //VERIFICA NUMERO PRESENTE IN ARRAY
 
 function checkNum(lista, num){
-  for (var i = 16; i >= lista.length; i--) {
-    var check = true;
-    if (lista.indexOf(num) != -1) {
-      check = false;
+  var i = 0;
+  var check = false;
+  while (i < lista.length && check == false){
+    if (lista[i] == num) {
+      check = true;
     }
+    i++;
   }
   return check;
 }
